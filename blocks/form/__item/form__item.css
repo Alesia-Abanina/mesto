@@ -1,0 +1,19 @@
+.form__item {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 17px;
+  margin: 0 0 37px;
+}
+
+.form__item:nth-of-type(2) {
+  margin: 0;
+}
+
+.form__item:focus {
+  outline: none;
+}

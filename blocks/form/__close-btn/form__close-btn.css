@@ -1,0 +1,10 @@
+.form__close-btn {
+  position: absolute;
+  background-color: transparent;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  border: none;
+  right: 11px;
+  top: -46px;
+}

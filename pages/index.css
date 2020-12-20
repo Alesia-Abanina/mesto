@@ -19,8 +19,23 @@
 @import url(../blocks/profile/__edit/profile__edit.css);
 
 @import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__list/elements__list.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__title/element__title.css);
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__img/element__img.css);
 @import url(../blocks/element/__like/element__like.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/_display/form_display_active.css);
+@import url(../blocks/form/__heading/form__heading.css);
+@import url(../blocks/form/__input-container/form__input-container.css);
+@import url(../blocks/form/__item/form__item.css);
+@import url(../blocks/form/__submit/form__submit.css);
+@import url(../blocks/form/__submit-text/form__submit-text.css);
+@import url(../blocks/form/__close-btn/form__close-btn.css);
+@import url(../blocks/form/__close-icon/form__close-icon.css);
+@import url(../blocks/form/__container/form__container.css);

@@ -1,0 +1,13 @@
+.form {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  align-items: center;
+  font-family: 'Inter', 'Arial', sans-serif;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 123px 19px 0;
+}
