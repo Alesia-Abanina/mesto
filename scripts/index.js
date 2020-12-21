@@ -1,33 +1,38 @@
+const togglePopup = (event) => {
+  event.target.classList.toggle('form_display_active');
+}
+
 const formOverlay = document.querySelector('.form');
 formOverlay.addEventListener('click', (event) => {
   if (event.target === event.currentTarget) {
-    formOverlay.classList.remove('form_display_active');
+    togglePopup();
   }
 });
 
 const profileEditBtn = document.querySelector('.profile__edit');
-profileEditBtn.addEventListener('click', () => {
-  nameInput.value = nameTitle.textContent;
-  descriptionInput.value = descriptionSubtitle.textContent;
-  formOverlay.classList.add('form_display_active');
-});
+profileEditBtn.addEventListener('click', togglePopup);
 
 const closeBtn = formOverlay.querySelector('.form__close-btn');
-closeBtn.addEventListener('click', () => {
-  formOverlay.classList.remove('form_display_active');
-});
+closeBtn.addEventListener('click', togglePopup);
 
 const nameInput = formOverlay.querySelector('#name');
 const descriptionInput = formOverlay.querySelector('#description');
 const nameTitle = document.querySelector('.profile__title');
 const descriptionSubtitle = document.querySelector('.profile__subtitle');
-console.log(nameTitle.textContent);
+nameInput.value = nameTitle.textContent;
+descriptionInput.value = descriptionSubtitle.textContent;
 
-const formElement = document.querySelector('.form');
-formElement.addEventListener('submit', (event) => {
+const formPopup = document.querySelector('.form__popup');
+formPopup.addEventListener('submit', (event) => {
   event.preventDefault();
   nameTitle.textContent = nameInput.value;
   descriptionSubtitle.textContent = descriptionInput.value;
-  formOverlay.classList.remove('form_display_active');
+  togglePopup();
 });
 
+const likeButtons = document.querySelectorAll('.element__like');
+for (let i = 0; i < likeButtons.length; i++){
+  likeButtons[i].addEventListener('click', (event) => {
+    event.target.classList.toggle('element__like_type_active');
+  });
+}

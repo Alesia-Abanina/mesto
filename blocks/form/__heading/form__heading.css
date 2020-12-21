@@ -5,3 +5,10 @@
   color: #000000;
   margin: 0;
 }
+
+@media screen and (min-width: 768px) {
+  .form__heading {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
