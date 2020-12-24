@@ -5,6 +5,11 @@
   border-radius: 2px;
   box-sizing: border-box;
   margin: 45px 0 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 .form__submit:hover {
@@ -14,5 +19,7 @@
 @media screen and (min-width: 768px) {
   .form__submit {
     height: 50px;
+    font-size: 18px;
+    line-height: 22px;
   }
 }

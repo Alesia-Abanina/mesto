@@ -23,15 +23,11 @@
         <div class="profile__info">
           <div class="profile__title-info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit button">
-              <img src="./images/button-edit.svg" alt="Редактировать профиль" class="profile__edit-img">
-            </button>
+            <button type="button" class="profile__edit button"></button>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add button">
-          <img src="./images/button-plus.svg" alt="Добавить новое место" class="profile__add-img">
-        </button>
+        <button type="button" class="profile__add button"></button>
       </section>
 
       <section class="elements">
@@ -40,42 +36,42 @@
             <img src="./images/karach.jpg" alt="Карачаево-Черкессия" class="element__img">
             <div class="element__info">
               <h2 class="element__title">Карачаево-Черкессия</h2>
-              <button class="element__like button"></button>
+              <button type="button" class="element__like button"></button>
             </div>
           </li>
           <li class="element">
             <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__img">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like button"></button>
+              <button type="button" class="element__like button"></button>
             </div>
           </li>
           <li class="element">
             <img src="./images/dombay.png" alt="Домбай" class="element__img">
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__like button"></button>
+              <button type="button" class="element__like button"></button>
             </div>
           </li>
           <li class="element">
             <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="element__img">
             <div class="element__info">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like button"></button>
+              <button type="button" class="element__like button"></button>
             </div>
           </li>
           <li class="element">
             <img src="./images/dombay.png" alt="Домбай" class="element__img">
             <div class="element__info">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__like button"></button>
+              <button type="button" class="element__like button"></button>
             </div>
           </li>
           <li class="element">
             <img src="./images/karach.jpg" alt="Карачаево-Черкессия" class="element__img">
             <div class="element__info">
               <h2 class="element__title">Карачаево-Черкессия</h2>
-              <button class="element__like button"></button>
+              <button type="button" class="element__like button"></button>
             </div>
           </li>
         </ul>
@@ -86,18 +82,18 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <section class="form">
-      <form class="form__popup">
-        <span class="form__close-btn button">
-          <img src="./images/button-plus.svg" alt="Закрыть" class="form__close-icon">
-        </span>
-        <h2 class="form__heading">Редактировать профиль</h2>
-        <fieldset class="form__input-container">
-          <input type="text" class="form__item" id="name">
-          <input type="text" class="form__item" id="description">
-          <input type="submit" class="button form__submit form__submit-text" value="Сохранить">
-        </fieldset>
-      </form>
+    <section class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close-btn button"></button>
+        <h2 class="popup__heading">Редактировать профиль</h2>
+        <form class="form" name="edit-profile">
+          <fieldset class="form__input-container">
+            <input type="text" class="form__item form__item_el_name" name="name">
+            <input type="text" class="form__item form__item_el_description" name="description">
+            <button type="submit" class="button form__submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
     </section>
   </div>
   <script src="./scripts/index.js"></script>

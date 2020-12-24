@@ -1,40 +1,43 @@
-let togglePopup = () => {
-  formOverlay.classList.toggle('form_display_active');
-}
+let popup = document.querySelector('.popup');
+let closeBtn = popup.querySelector('.popup__close-btn');
 
-let formOverlay = document.querySelector('.form');
-formOverlay.addEventListener('click', (event) => {
-  if (event.target === event.currentTarget) {
-    togglePopup();
-  }
-});
+let form = popup.querySelector('.form');
+let nameInput = form.querySelector('.form__item_el_name');
+let descriptionInput = form.querySelector('.form__item_el_description');
 
-let nameInput = formOverlay.querySelector('#name');
-let descriptionInput = formOverlay.querySelector('#description');
+let profileEditBtn = document.querySelector('.profile__edit');
 let nameTitle = document.querySelector('.profile__title');
 let descriptionSubtitle = document.querySelector('.profile__subtitle');
 
-let profileEditBtn = document.querySelector('.profile__edit');
-profileEditBtn.addEventListener('click', () => {
+
+// functions
+function openPopup() {
   nameInput.value = nameTitle.textContent;
   descriptionInput.value = descriptionSubtitle.textContent;
-  togglePopup();
-});
+  popup.classList.add('popup_display_active');
+}
 
-let closeBtn = formOverlay.querySelector('.form__close-btn');
-closeBtn.addEventListener('click', togglePopup);
+function closePopup() {
+  popup.classList.remove('popup_display_active');
+}
 
-let formPopup = document.querySelector('.form__popup');
-formPopup.addEventListener('submit', (event) => {
-  event.preventDefault();
+function updateProfile() {
   nameTitle.textContent = nameInput.value;
   descriptionSubtitle.textContent = descriptionInput.value;
-  togglePopup();
+  closePopup();
+}
+
+// listeners
+profileEditBtn.addEventListener('click', openPopup);
+closeBtn.addEventListener('click', closePopup);
+
+popup.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+    closePopup();
+  }
 });
 
-let likeButtons = document.querySelectorAll('.element__like');
-for (let i = 0; i < likeButtons.length; i++) {
-  likeButtons[i].addEventListener('click', (event) => {
-    event.target.classList.toggle('element__like_type_active');
-  });
-}
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  updateProfile();
+});

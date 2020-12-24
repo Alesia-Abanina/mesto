@@ -1,5 +1,6 @@
-.form {
+.popup {
   display: none;
+  justify-content: center;
   flex-direction: column;
   position: fixed;
   align-items: center;
@@ -9,11 +10,5 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 123px 19px 0;
-}
-
-@media screen and (min-width: 768px) {
-  .form {
-    padding-top: 195px;
-  }
+  padding: 0 19px 0;
 }
