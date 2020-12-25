@@ -21,7 +21,8 @@ function closePopup() {
   popup.classList.remove('popup_display_active');
 }
 
-function updateProfile() {
+function updateProfile(event) {
+  event.preventDefault();
   nameTitle.textContent = nameInput.value;
   descriptionSubtitle.textContent = descriptionInput.value;
   closePopup();
@@ -37,7 +38,4 @@ popup.addEventListener('click', (event) => {
   }
 });
 
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  updateProfile();
-});
+form.addEventListener('submit', updateProfile);
