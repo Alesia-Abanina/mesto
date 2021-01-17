@@ -3,12 +3,18 @@ const placePopup = initPopup('.place-popup');
 const imagePopup = initPopup('.image-popup');
 
 const profileForm = profilePopup.querySelector('.form');
-const nameInput = profileForm.querySelector('.form__item_el_name');
-const descriptionInput = profileForm.querySelector('.form__item_el_description');
+const profileNameInput = profileForm.querySelector('.form__item_el_name');
+const profileDescriptionInput = profileForm.querySelector('.form__item_el_description');
+
+const placeForm = placePopup.querySelector('.form');
+const placeNameInput = placeForm.querySelector('.form__item_el_name');
+const placeLinkInput = placeForm.querySelector('.form__item_el_link');
 
 const profileEditBtn = document.querySelector('.profile__edit');
 const nameTitle = document.querySelector('.profile__title');
 const descriptionSubtitle = document.querySelector('.profile__subtitle');
+
+const placeAddBtn = document.querySelector('.profile__add');
 
 // Cards initialization
 const cardsList = document.querySelector('.elements__list');
@@ -88,19 +94,39 @@ function handlePopupClose(evt) {
 }
 
 function handleProfileEdit() {
-  nameInput.value = nameTitle.textContent;
-  descriptionInput.value = descriptionSubtitle.textContent;
+  profileNameInput.value = nameTitle.textContent;
+  profileDescriptionInput.value = descriptionSubtitle.textContent;
   profilePopup.classList.add('popup_display_active');
 }
 
 function handleProfileSubmit(evt) {
   evt.preventDefault();
-  nameTitle.textContent = nameInput.value;
-  descriptionSubtitle.textContent = descriptionInput.value;
+  nameTitle.textContent = profileNameInput.value;
+  descriptionSubtitle.textContent = profileDescriptionInput.value;
   handlePopupClose(evt);
+}
+
+function hadlePlaceAdd() {
+  placeNameInput.value = '';
+  placeLinkInput.value = '';
+  placePopup.classList.add('popup_display_active');
+}
+
+function handlePlaceSubmit(evt) {
+  evt.preventDefault();
+  if (placeNameInput.value !== '' && placeLinkInput.value !== '') {
+    const card = createCard(placeNameInput.value, placeLinkInput.value);
+    cardsList.prepend(card);
+    handlePopupClose(evt);
+  }
+  else {
+    alert('Название и ссылка не могут быть пустыми');
+  }
 }
 
 // listeners
 profileEditBtn.addEventListener('click', handleProfileEdit);
 profileForm.addEventListener('submit', handleProfileSubmit);
 
+placeAddBtn.addEventListener('click', hadlePlaceAdd);
+placeForm.addEventListener('submit', handlePlaceSubmit);
