@@ -1,11 +1,9 @@
 const profilePopup = initPopup('.profile-popup');
-const placePopup = initPopup('.place-popup');
-const imagePopup = initPopup('.image-popup');
-
 const profileForm = profilePopup.querySelector('.form');
 const profileNameInput = profileForm.querySelector('.form__item_el_name');
 const profileDescriptionInput = profileForm.querySelector('.form__item_el_description');
 
+const placePopup = initPopup('.place-popup');
 const placeForm = placePopup.querySelector('.form');
 const placeNameInput = placeForm.querySelector('.form__item_el_name');
 const placeLinkInput = placeForm.querySelector('.form__item_el_link');
@@ -15,6 +13,10 @@ const nameTitle = document.querySelector('.profile__title');
 const descriptionSubtitle = document.querySelector('.profile__subtitle');
 
 const placeAddBtn = document.querySelector('.profile__add');
+
+const picturePopup = initPopup('.image-popup');
+const pictureImg = picturePopup.querySelector('.popup__image');
+const pictureCaption = picturePopup.querySelector('.popup__image-caption');
 
 // Cards initialization
 const cardsList = document.querySelector('.elements__list');
@@ -58,10 +60,11 @@ function createCard(nameValue, linkValue) {
   const cardElement = cardTemplate.cloneNode(true);
 
   cardElement.querySelector('.element__title').textContent = nameValue;
-  cardElement.querySelector('.element__img').src = linkValue;
+  cardElement.querySelector('.element__img').setAttribute('src', linkValue);
 
   cardElement.querySelector('.element__like').addEventListener('click', handleCardLike);
   cardElement.querySelector('.element__delete').addEventListener('click', handleCardDelete);
+  cardElement.querySelector('.element__img').addEventListener('click', handleImageOpen);
 
   return cardElement;
 }
@@ -122,6 +125,18 @@ function handlePlaceSubmit(evt) {
   else {
     alert('Название и ссылка не могут быть пустыми');
   }
+}
+
+function handleImageOpen(evt) {
+  const card = evt.target.closest('.element');
+  const picture = card.querySelector('.element__img');
+  pictureImg.setAttribute('src', picture.getAttribute('src'));
+  pictureImg.setAttribute('alt', picture.getAttribute('alt'));
+
+  const title = card.querySelector('.element__title');
+  pictureCaption.textContent = title.textContent;
+
+  picturePopup.classList.add('popup_display_active');
 }
 
 // listeners
