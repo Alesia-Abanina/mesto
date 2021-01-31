@@ -45,8 +45,10 @@
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form class="form" name="edit-profile">
           <fieldset class="form__input-container">
-            <input type="text" class="form__item form__item_el_name" name="name">
-            <input type="text" class="form__item form__item_el_description" name="description">
+            <input type="text" id="name-input" class="form__item form__item_el_name" name="name" minlength="2" maxlength="40" required>
+            <span class="form__item-error name-input-error"></span>
+            <input type="text" id="description-input" class="form__item form__item_el_description" name="description"minlength="2" maxlength="200" required>
+            <span class="form__item-error description-input-error"></span>
             <button type="submit" class="button form__submit">Сохранить</button>
           </fieldset>
         </form>
@@ -59,8 +61,10 @@
         <h2 class="popup__heading">Новое место</h2>
         <form class="form" name="add-profile">
           <fieldset class="form__input-container">
-            <input type="text" class="form__item form__item_el_name" name="name" placeholder="Название">
-            <input type="text" class="form__item form__item_el_link" name="link" placeholder="Ссылка на картинку">
+            <input type="text" id="place-input" class="form__item form__item_el_name" name="name" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="form__item-error place-input-error"></span>
+            <input type="url" id="link-input" class="form__item form__item_el_link" name="link" placeholder="Ссылка на картинку" required>
+            <span class="form__item-error link-input-error"></span>
             <button type="submit" class="button form__submit">Сохранить</button>
           </fieldset>
         </form>
@@ -90,6 +94,7 @@
   </template>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
