@@ -35,26 +35,23 @@ const toggleButtonState = (settings, formElement, inputList) => {
   }
 }
 
-const handleFormShow = (evt) => {
-  toggleButtonState(settings, formElement, inputList);
-  inputList.forEach((inputElement) => {
-    hideInputError(settings, formElement, inputElement);
-  });
-}
-
-const handleFormInput = (evt) => {
-  checkInputValidity(settings, formElement, inputElement);
-  toggleButtonState(settings, formElement, inputList);
-}
-
 const setEventListeners = (settings, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   toggleButtonState(settings, formElement, inputList);
+
   // when form is shown change btn state and remove validation errors
-  formElement.addEventListener('show', handleFormShow);
+  formElement.addEventListener('show', () => {
+    toggleButtonState(settings, formElement, inputList);
+    inputList.forEach((inputElement) => {
+      hideInputError(settings, formElement, inputElement);
+    });
+  });
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', handleFormInput);
+    inputElement.addEventListener('input', () => {
+      checkInputValidity(settings, formElement, inputElement);
+      toggleButtonState(settings, formElement, inputList);
+    });
   });
 }
 
