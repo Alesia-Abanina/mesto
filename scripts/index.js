@@ -127,14 +127,11 @@ function handlePlaceSubmit(evt) {
   }
 }
 
-function handleImageOpen(evt) {
-  const card = evt.target.closest('.element');
-  const picture = card.querySelector('.element__img');
-  pictureImg.setAttribute('src', picture.getAttribute('src'));
-  pictureImg.setAttribute('alt', picture.getAttribute('alt'));
+function handleImageOpen(nameValue, linkValue) {
+  pictureImg.setAttribute('src', linkValue);
+  pictureImg.setAttribute('alt', nameValue);
 
-  const title = card.querySelector('.element__title');
-  pictureCaption.textContent = title.textContent;
+  pictureCaption.textContent = nameValue
 
   openPopup(picturePopup);
 }
@@ -152,7 +149,9 @@ function createCard(nameValue, linkValue) {
 
   likeBtn.addEventListener('click', handleCardLike);
   deleteBtn.addEventListener('click', handleCardDelete);
-  image.addEventListener('click', handleImageOpen);
+  image.addEventListener('click', () => {
+    handleImageOpen(nameValue, linkValue)
+  });
 
   return cardElement;
 }
