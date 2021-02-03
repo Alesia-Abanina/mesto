@@ -1,6 +1,17 @@
-function handlePopupClose(evt) {
-  const popup = evt.target.closest('.popup');
-  popup.classList.remove('popup_display_active');
+let activePopup = null; // active opened popup
+
+function openPopup(popup) {
+  popup.classList.add('popup_display_active');
+  activePopup = popup;
+  document.addEventListener('keydown', handleKeydown);
+}
+
+function closePopup() {
+  if (activePopup) {
+    activePopup.classList.remove('popup_display_active');
+    activePopup = null;
+    document.removeEventListener('keydown', handleKeydown);
+  }
 }
 
 function initPopup(className) {
@@ -10,7 +21,7 @@ function initPopup(className) {
 
   popup.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
-      handlePopupClose(evt);
+      closePopup();
     }
   });
   return popup;
@@ -76,10 +87,21 @@ function handleCardLike(evt) {
   evt.target.classList.toggle('element__like_active');
 };
 
+function handleKeydown(evt) {
+  if (evt.key === 'Escape') {
+    closePopup();
+  }
+}
+
+function handlePopupClose(evt) {
+  closePopup();
+}
+
 function handleProfileEdit() {
   profileNameInput.value = nameTitle.textContent;
   profileDescriptionInput.value = descriptionSubtitle.textContent;
-  profilePopup.classList.add('popup_display_active');
+  profileForm.dispatchEvent(new Event('show')); // send an event to trigger toggleButtonState() logic
+  openPopup(profilePopup);
 }
 
 function handleProfileSubmit(evt) {
@@ -92,7 +114,8 @@ function handleProfileSubmit(evt) {
 function hadlePlaceAdd() {
   placeNameInput.value = '';
   placeLinkInput.value = '';
-  placePopup.classList.add('popup_display_active');
+  placeForm.dispatchEvent(new Event('show')); // send an event to trigger toggleButtonState() logic
+  openPopup(placePopup);
 }
 
 function handlePlaceSubmit(evt) {
@@ -101,9 +124,6 @@ function handlePlaceSubmit(evt) {
     const card = createCard(placeNameInput.value, placeLinkInput.value);
     cardsList.prepend(card);
     handlePopupClose(evt);
-  }
-  else {
-    alert('Название и ссылка не могут быть пустыми');
   }
 }
 
@@ -116,7 +136,7 @@ function handleImageOpen(evt) {
   const title = card.querySelector('.element__title');
   pictureCaption.textContent = title.textContent;
 
-  picturePopup.classList.add('popup_display_active');
+  openPopup(picturePopup);
 }
 
 // functions
@@ -145,7 +165,7 @@ placeAddBtn.addEventListener('click', hadlePlaceAdd);
 placeForm.addEventListener('submit', handlePlaceSubmit);
 
 //------------
-const cards = initialCards.map((element)  => {
+const cards = initialCards.map((element) => {
   return createCard(element.name, element.link);
 });
 

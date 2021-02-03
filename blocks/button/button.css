@@ -5,6 +5,6 @@
   outline: none;
 }
 
-.button:hover {
+.button:hover:enabled {
   opacity: 0.6;
 }

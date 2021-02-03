@@ -2,7 +2,6 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: space-between;
   background: #FFFFFF;
   border-radius: 10px;
   min-height: 322px;

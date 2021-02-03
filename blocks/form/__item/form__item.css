@@ -7,12 +7,12 @@
   font-size: 14px;
   font-family: inherit;
   line-height: 17px;
-  margin: 29px 0 0;
+  margin: 0;
   padding-bottom: 9px;
 }
 
 .form__item:first-of-type {
-  margin: 0;
+  margin: 46px 0 0;
 }
 
 .form__item:focus {

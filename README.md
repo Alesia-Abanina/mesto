@@ -10,6 +10,7 @@ https://alesia-abanina.github.io/mesto/index.html
 * позиционирование
 * директива @media
 * JavaScript
+* Валидация форм
 
 
 ## Планы по доработке
