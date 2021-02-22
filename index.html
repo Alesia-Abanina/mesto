@@ -43,7 +43,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close-btn button"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="form" name="edit-profile" novalidate>
+        <form class="form form__edit-profile" name="edit-profile" novalidate>
           <fieldset class="form__input-container">
             <input type="text" id="name-input" class="form__item form__item_el_name" name="name" minlength="2" maxlength="40" required>
             <span class="form__item-error name-input-error"></span>
@@ -59,7 +59,7 @@
       <div class="popup__container">
         <button type="button" class="popup__close-btn button"></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="form " name="add-profile" novalidate>
+        <form class="form form__add-profile" name="add-profile" novalidate>
           <fieldset class="form__input-container">
             <input type="text" id="place-input" class="form__item form__item_el_name" name="name" placeholder="Название" minlength="2" maxlength="30" required>
             <span class="form__item-error place-input-error"></span>
@@ -93,8 +93,7 @@
     </li>
   </template>
 
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
