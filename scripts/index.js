@@ -153,7 +153,7 @@ initialCards.forEach((data) => {
 });
 
 // enable form fields validation
-const formSelectors = ['.form__edit-profile', '.form__add-profile'];
+const formSelectors = ['.edit-profile', '.add-profile'];
 formSelectors.forEach((formSelector) => {
   const settings = {
     inputSelector: '.form__item',
