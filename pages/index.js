@@ -1,14 +1,14 @@
-import Card from './Card.js'
-import FormValidator from './FormValidator.js'
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import Section from './Section.js';
-import UserInfo from './UserInfo.js';
+import Card from '../src/components/Card.js'
+import FormValidator from '../src/components/FormValidator.js'
+import PopupWithForm from '../src/components/PopupWithForm.js';
+import PopupWithImage from '../src/components/PopupWithImage.js';
+import Section from '../src/components/Section.js';
+import UserInfo from '../src/components/UserInfo.js';
 import {
   initialCards,
   profileEditBtn,
   placeAddBtn,
-} from './constants.js'
+} from '../src/utils/constants.js'
 
 const imagePopup = new PopupWithImage('.image-popup');
 
