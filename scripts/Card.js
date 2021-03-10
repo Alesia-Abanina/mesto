@@ -1,16 +1,9 @@
 export default class Card {
-  _name
-  _link
-  _cardSelector
-  _element
-  _likeBtn
-  _openImagePopupCallback
-
-  constructor(data, cardSelector, openImagePopupCallback) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._openImagePopupCallback = openImagePopupCallback;
+    this._handleCardClick = handleCardClick;
   }
 
   generateCard() {
@@ -44,7 +37,7 @@ export default class Card {
     });
 
     image.addEventListener('click', () => {
-      this._openImagePopupCallback(this._name, this._link);
+      this._handleCardClick(this._link, this._name);
     });
   }
 
