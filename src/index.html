@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
@@ -12,13 +11,13 @@
   <div class="page">
 
     <header class="header">
-      <img class="header__logo" src="./images/logo-mesto.svg" alt="Логотип">
+      <img class="header__logo" src="<%=require('./images/logo-mesto.svg')%>" alt="Логотип">
     </header>
 
     <main class="content">
       <section class="profile">
         <div class="profile__avatar">
-          <img src="./images/profile-image.jpg" alt="Фото автора" class="profile__img">
+          <img src="<%=require('./images/profile-image.jpg')%>"  alt="Фото автора" class="profile__img">
         </div>
         <div class="profile__info">
           <div class="profile__title-info">
@@ -75,7 +74,7 @@
       <div class="popup__image-container">
         <button type="button" class="popup__close-btn button"></button>
         <figure class="popup__figure">
-          <img src="./images/no-image.gif" alt="Изображение отсуствует" class="popup__image">
+          <img src="<%=require('./images/no-image.gif')%>" alt="Изображение отсуствует" class="popup__image">
           <figcaption class="popup__image-caption"></figcaption>
         </figure>
       </div>
@@ -84,7 +83,7 @@
 
   <template id="card-template">
     <li class="element">
-      <img src="./images/no-image.gif" alt="Изображение отсуствует" class="element__img">
+      <img src="<%=require('./images/no-image.gif')%>" alt="Изображение отсуствует" class="element__img">
       <button type="button" class="element__delete button"></button>
       <div class="element__info">
         <h2 class="element__title"></h2>
@@ -92,8 +91,6 @@
       </div>
     </li>
   </template>
-
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>

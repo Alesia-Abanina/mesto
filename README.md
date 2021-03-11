@@ -11,6 +11,8 @@ https://alesia-abanina.github.io/mesto/index.html
 * директива @media
 * JavaScript
 * Валидация форм
+* Сборка с помощью Webpack
+* Минификация и транспиляция JS бабелем
 
 
 ## Планы по доработке
