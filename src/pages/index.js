@@ -23,7 +23,8 @@ function createCard(data) {
 }
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
-  descriptionSelector: '.profile__subtitle'
+  descriptionSelector: '.profile__subtitle',
+  avatarSelector: '.profile__img'
 });
 
 const profilePopup = new PopupWithForm((data) => {
@@ -69,17 +70,24 @@ const api = new Api({
 });
 
 api.getInitialCards()
-.then((initialCards) => {
-  const cardsList = new Section({
-    items: initialCards,
-    renderer: (data) => {
-      cardsList.append(createCard(data));
-    }
-  }, '.elements__list');
-  cardsList.renderItems();
-})
-.catch((err) => {
-  console.log(err);
-});
+  .then((initialCards) => {
+    const cardsList = new Section({
+      items: initialCards,
+      renderer: (data) => {
+        cardsList.append(createCard(data));
+      }
+    }, '.elements__list');
+    cardsList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-
+api.getUserInfo()
+  .then((info) => {
+    userInfo.setUserInfo(info);
+    userInfo.setProfileImage(info);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
