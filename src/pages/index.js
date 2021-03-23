@@ -6,8 +6,8 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 import {
-  initialCards,
   profileEditBtn,
   placeAddBtn,
 } from '../utils/constants.js'
@@ -25,13 +25,6 @@ const userInfo = new UserInfo({
   nameSelector: '.profile__title',
   descriptionSelector: '.profile__subtitle'
 });
-
-const cardsList = new Section({
-  items: initialCards,
-  renderer: (data) => {
-    cardsList.append(createCard(data));
-  }
-}, '.elements__list');
 
 const profilePopup = new PopupWithForm((data) => {
   userInfo.setUserInfo(data);
@@ -67,4 +60,26 @@ formSelectors.forEach((formSelector) => {
   formValidator.enableValidation();
 });
 
-cardsList.renderItems();
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  headers: {
+    authorization: '0cd98bf9-0cd7-4ef0-a57e-b7dd514aead8',
+    'Content-Type': 'application/json'
+  }
+});
+
+api.getInitialCards()
+.then((initialCards) => {
+  const cardsList = new Section({
+    items: initialCards,
+    renderer: (data) => {
+      cardsList.append(createCard(data));
+    }
+  }, '.elements__list');
+  cardsList.renderItems();
+})
+.catch((err) => {
+  console.log(err);
+});
+
+
