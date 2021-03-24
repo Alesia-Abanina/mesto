@@ -10,7 +10,16 @@ import Api from '../components/Api.js';
 import {
   profileEditBtn,
   placeAddBtn,
+  profileAvatar,
 } from '../utils/constants.js'
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  headers: {
+    authorization: '0cd98bf9-0cd7-4ef0-a57e-b7dd514aead8',
+    'Content-Type': 'application/json'
+  }
+});
 
 const imagePopup = new PopupWithImage('.image-popup');
 
@@ -28,12 +37,32 @@ const userInfo = new UserInfo({
 });
 
 const profilePopup = new PopupWithForm((data) => {
-  userInfo.setUserInfo(data);
+  api.setUserInfo(data)
+    .then((res) => {
+      userInfo.setUserInfo(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }, '.profile-popup');
+
+const avatarPopup = new PopupWithForm((data) => {
+  api.setUserAvatar(data)
+    .then((res) => {
+      userInfo.setProfileImage(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, '.avatar-popup');
 
 const placePopup = new PopupWithForm((data) => {
   cardsList.prepend(createCard(data));
 }, '.place-popup');
+
+const confirmPopup = new PopupWithForm((data) => {
+
+}, '.confirm-popup');
 
 // Callbacks
 function handleProfileEdit() {
@@ -44,12 +73,17 @@ function handlePlaceAdd() {
   placePopup.open();
 }
 
+function handleProfileAvatar() {
+  avatarPopup.open();
+}
+
 // listeners
 profileEditBtn.addEventListener('click', handleProfileEdit);
 placeAddBtn.addEventListener('click', handlePlaceAdd);
+profileAvatar.addEventListener('click', handleProfileAvatar);
 
 // enable form fields validation
-const formSelectors = ['.edit-profile', '.add-profile'];
+const formSelectors = ['.edit-profile', '.add-profile', '.update-avatar'];
 formSelectors.forEach((formSelector) => {
   const settings = {
     inputSelector: '.form__item',
@@ -61,13 +95,6 @@ formSelectors.forEach((formSelector) => {
   formValidator.enableValidation();
 });
 
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
-  headers: {
-    authorization: '0cd98bf9-0cd7-4ef0-a57e-b7dd514aead8',
-    'Content-Type': 'application/json'
-  }
-});
 
 api.getInitialCards()
   .then((initialCards) => {

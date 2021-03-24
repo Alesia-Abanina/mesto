@@ -46,9 +46,35 @@
           <fieldset class="form__input-container">
             <input type="text" id="name-input" class="form__item form__item_el_name" name="name" minlength="2" maxlength="40" required>
             <span class="form__item-error name-input-error"></span>
-            <input type="text" id="description-input" class="form__item form__item_el_description" name="description"minlength="2" maxlength="200" required>
+            <input type="text" id="description-input" class="form__item form__item_el_description" name="about" minlength="2" maxlength="200" required>
             <span class="form__item-error description-input-error"></span>
             <button type="submit" class="button form__submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <section class="popup avatar-popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close-btn button"></button>
+        <h2 class="popup__heading">Обновить аватар</h2>
+        <form class="form update-avatar" name="update-avatar" novalidate>
+          <fieldset class="form__input-container">
+            <input type="url" id="link-input" class="form__item form__item_el_link" name="avatar" placeholder="Ссылка на картинку" required>
+            <span class="form__item-error link-input-error"></span>
+            <button type="submit" class="button form__submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <section class="popup confirm-popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close-btn button"></button>
+        <h2 class="popup__heading">Вы уверены?</h2>
+        <form class="form confirm-delete" name="confirm-delete" novalidate>
+          <fieldset class="form__input-container">
+            <button type="submit" class="button form__submit">Да</button>
           </fieldset>
         </form>
       </div>
@@ -87,7 +113,10 @@
       <button type="button" class="element__delete button"></button>
       <div class="element__info">
         <h2 class="element__title"></h2>
-        <button type="button" class="element__like button"></button>
+        <div class="element__like-block">
+          <button type="button" class="element__like button"></button>
+          <span class="element__like-number">1233</span>
+        </div>
       </div>
     </li>
   </template>
