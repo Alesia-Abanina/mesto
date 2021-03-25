@@ -1,12 +1,12 @@
 export default class Api {
   constructor(options) {
-    this.baseUrl = options.baseUrl;
-    this.headers = options.headers;
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
 
   getInitialCards() {
-    return fetch(`${this.baseUrl}/cards`, {
-      headers: this.headers
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers
     })
       .then(res => {
         if (res.ok) {
@@ -17,8 +17,8 @@ export default class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this.baseUrl}/users/me`, {
-      headers: this.headers
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers
     })
       .then(res => {
         if (res.ok) {
@@ -29,9 +29,9 @@ export default class Api {
   }
 
   setUserInfo({name, about}) {
-    return fetch(`${this.baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         about: about
@@ -46,12 +46,50 @@ export default class Api {
   }
 
   setUserAvatar({avatar}) {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatar
       })
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  createCard({name, link}) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        link: link
+      })
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  deleteCard(id) {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
+      method: 'DELETE',
+      headers: this._headers,
+    });
+  }
+
+  likeCard(id, isLike) {
+    const method = isLike ? 'PUT': 'DELETE';
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+      method: method,
+      headers: this._headers,
     })
     .then(res => {
       if (res.ok) {
