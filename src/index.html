@@ -44,9 +44,9 @@
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form class="form edit-profile" name="edit-profile" novalidate>
           <fieldset class="form__input-container">
-            <input type="text" class="form__item form__item_el_name" name="name" minlength="2" maxlength="40" required>
+            <input type="text" id="name-input" class="form__item form__item_el_name" name="name" minlength="2" maxlength="40" required>
             <span class="form__item-error name-input-error"></span>
-            <input type="text" class="form__item form__item_el_description" name="about" minlength="2" maxlength="200" required>
+            <input type="text" id="description-input" class="form__item form__item_el_description" name="about" minlength="2" maxlength="200" required>
             <span class="form__item-error description-input-error"></span>
             <button type="submit" class="button form__submit">Сохранить</button>
           </fieldset>
@@ -60,8 +60,8 @@
         <h2 class="popup__heading">Обновить аватар</h2>
         <form class="form update-avatar" name="update-avatar" novalidate>
           <fieldset class="form__input-container">
-            <input type="url" class="form__item form__item_el_link" name="avatar" placeholder="Ссылка на картинку" required>
-            <span class="form__item-error link-input-error"></span>
+            <input type="url" id="avatar-link-input" class="form__item form__item_el_link" name="avatar" placeholder="Ссылка на картинку" required>
+            <span class="form__item-error avatar-link-input-error"></span>
             <button type="submit" class="button form__submit">Сохранить</button>
           </fieldset>
         </form>
@@ -86,9 +86,9 @@
         <h2 class="popup__heading">Новое место</h2>
         <form class="form add-profile" name="add-profile" novalidate>
           <fieldset class="form__input-container">
-            <input type="text" class="form__item form__item_el_name" name="name" placeholder="Название" minlength="2" maxlength="30" required>
+            <input type="text" id="place-input" class="form__item form__item_el_name" name="name" placeholder="Название" minlength="2" maxlength="30" required>
             <span class="form__item-error place-input-error"></span>
-            <input type="url" class="form__item form__item_el_link" name="link" placeholder="Ссылка на картинку" required>
+            <input type="url" id="link-input" class="form__item form__item_el_link" name="link" placeholder="Ссылка на картинку" required>
             <span class="form__item-error link-input-error"></span>
             <button type="submit" class="button form__submit">Создать</button>
           </fieldset>
