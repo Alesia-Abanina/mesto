@@ -8,24 +8,14 @@ export default class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+    .then((res) => this._processResponse(res));
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+    .then((res) => this._processResponse(res));
   }
 
   setUserInfo({name, about}) {
@@ -37,12 +27,7 @@ export default class Api {
         about: about
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then((res) => this._processResponse(res));
   }
 
   setUserAvatar({avatar}) {
@@ -53,12 +38,7 @@ export default class Api {
         avatar: avatar
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then((res) => this._processResponse(res));
   }
 
   createCard({name, link}) {
@@ -70,19 +50,15 @@ export default class Api {
         link: link
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then((res) => this._processResponse(res));
   }
 
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: this._headers,
-    });
+    })
+    .then((res) => this._processResponse(res));
   }
 
   likeCard(id, isLike) {
@@ -91,12 +67,14 @@ export default class Api {
       method: method,
       headers: this._headers,
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    .then((res) => this._processResponse(res));
+  }
+
+  _processResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 }
 

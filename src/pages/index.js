@@ -33,18 +33,12 @@ const userInfo = new UserInfo({
 
 const confirmPopup = new PopupWithConfirmation((id, cardElement) => {
   api.deleteCard(id)
-    .then((res) => {
-      if (res.ok) {
+    .then(() => {
         cardElement.remove();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
+        confirmPopup.close();
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {
-      confirmPopup.close();
     });
 }, '.confirm-popup');
 
@@ -75,12 +69,10 @@ const profilePopup = new PopupWithForm((data) => {
   api.setUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res);
+      profilePopup.close();
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {
-      profilePopup.close();
     });
 }, '.profile-popup');
 
@@ -88,12 +80,10 @@ const avatarPopup = new PopupWithForm((data) => {
   api.setUserAvatar(data)
     .then((res) => {
       userInfo.setProfileImage(res);
+      avatarPopup.close();
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {
-      avatarPopup.close();
     });
 }, '.avatar-popup');
 
@@ -101,12 +91,10 @@ const placePopup = new PopupWithForm((data) => {
   api.createCard(data)
     .then((res) => {
       cardsList.prepend(createCard(res));
+      placePopup.close();
     })
     .catch((err) => {
       console.log(err);
-    })
-    .finally(() => {
-      placePopup.close();
     });
 }, '.place-popup');
 
